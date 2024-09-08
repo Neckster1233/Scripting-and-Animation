@@ -1,0 +1,43 @@
+// Create Base Sphere
+polySphere -radius 3 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative 0 3 0 ;
+
+//Create Middle Sphere
+polySphere -radius 3 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+polySphere -e -radius 2;
+move -relative 0 7 0 ;
+
+//Create Head Sphere
+polySphere -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative 0 9.5 0 ;
+
+//Create Nose Cone
+polyCone -radius 1 -height 2 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 0 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative 0 9.5 1.1 ;
+scale -relative .3 .5 .275 ;
+rotate -relative -objectSpace -forceOrderXYZ 90 0 0 ;
+
+//Create Right Eye
+polySphere -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -.3 9.7 .8 ;
+scale -relative .167 .167 .167 ;
+
+//Create Left Eye
+polySphere -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative .3 9.7 .8 ;
+scale -relative .167 .167 .167 ;
+
+//Create Top Button
+polySphere -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative 0 6.9 1.9 ;
+scale -relative .195 .195 .195 ;
+
+//Create Middle Button
+polySphere -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative 0 5 2.1 ;
+scale -relative .195 .195 .195 ;
+
+//Create Bottom Button
+polySphere -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative 0 3.7 2.8 ;
+scale -relative .195 .195 .195 ;
