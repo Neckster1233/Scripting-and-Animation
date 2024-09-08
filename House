@@ -1,4 +1,4 @@
-//Create Base Cube
+ //Create Base Cube
 polyCube -width 5 -height 5 -depth 5 -subdivisionsX 1 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -createUVs 4 -constructionHistory 1; 
 move -relative 0 2.5 0 ;
 
