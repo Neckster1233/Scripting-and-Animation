@@ -1,0 +1,37 @@
+float $Area = 25;
+float $ballSize = 0.5;
+float $sqrtArea = sqrt ($Area);
+
+//Create Boundary 1
+polyCube -width ($sqrtArea * 2) -height 1 -depth 1 -subdivisionsX 1 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -createUVs 4 -constructionHistory 1;
+move -relative $sqrtArea .5 0 ;
+rotate -relative -worldSpace -forceOrderXYZ 0 -90 0 ;
+
+//Create Boundary 2
+polyCube -width ($sqrtArea * 2) -height 1 -depth 1 -subdivisionsX 1 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -createUVs 4 -constructionHistory 1;
+move -relative (-$sqrtArea) .5 0 ;
+rotate -relative -worldSpace -forceOrderXYZ 0 -90 0 ;
+
+//Create Boundary 3
+polyCube -width ($sqrtArea * 2) -height 1 -depth 1 -subdivisionsX 1 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -createUVs 4 -constructionHistory 1;
+move -relative 0 .5 $sqrtArea ;
+
+//Create Boundary 4
+polyCube -width ($sqrtArea * 2) -height 1 -depth 1 -subdivisionsX 1 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -createUVs 4 -constructionHistory 1;
+move -relative 0 .5 (-$sqrtArea) ;
+
+//Create Balls
+polySphere -radius $ballSize -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative 0 ($ballSize) 0 ;
+
+polySphere -radius $ballSize -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative ($sqrtArea * 0.8) ($ballSize) 0 ;
+
+polySphere -radius $ballSize -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative (-$sqrtArea * 0.8) ($ballSize) 0 ;
+
+polySphere -radius $ballSize -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative 0 ($ballSize) ($sqrtArea * 0.8) ;
+
+polySphere -radius $ballSize -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative 0 ($ballSize) (-$sqrtArea * 0.8) ;
