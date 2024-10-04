@@ -1,0 +1,6 @@
+proc spiralStairs(int $numStairs, int $length, int $width, int $stairHeight, int $pivot, int $stepHeight, int $rotation)
+{
+    polyCube -$width -$stairHeight -$length -subdivisionsX 1 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -createuUVs 4 -constructionHistory 1;
+}
+
+spiralStairs(5, 3, 9, 1, 4, 4, 4);

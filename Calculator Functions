@@ -1,0 +1,85 @@
+global proc Add(int $input[])
+{
+    $i = 0;
+    if ($i < size($input))
+    {
+        $input[$i] += $input[$i + 1];
+        $i++;
+    }
+}
+int $array[] = {3,5,6};
+Add($array);
+print($array);
+global proc Subtract(int $input[])
+{
+    $i = 0;
+    if ($i < size($input))
+    {
+        $input[$i] -= $input[$i + 1];
+        $i++;
+    }
+}
+int $array[] = {3,5,6};
+Subtract($array);
+print($array);
+
+global proc Multiply(int $input[])
+{
+    $i = 0;
+    if ($i < size($input))
+    {
+        $input[$i] *= $input[$i + 1];
+        $i++;
+    }
+}
+int $array[] = {3,5,6};
+Multiply($array);
+print($array);
+
+global proc Divide(int $input[])
+{
+    $i = 0;
+    if ($i < size($input))
+    {
+        $input[$i] /= $input[$i + 1];
+        $i++;
+    }
+}
+int $array[] = {3,5,6};
+Divide($array);
+print($array);
+
+global proc Power(int $input[])
+{
+    $i = 0;
+    if ($i < size($input))
+    {
+        $input[$i] *= $input[$i];
+        $i++;
+    }
+}
+int $array[] = {3,5,6};
+Power($array);
+print($array);
+
+global proc Mean(int $input[])
+{
+    $i = 0;
+    if ($i < size($input))
+    {
+        $input[$i] += $input[$i + 1];
+        $i++;
+    }
+    $i /= size($input);
+}
+int $array[] = {3,5,6};
+Mean($array);
+print($array);
+
+global proc Median(int $input[])
+{
+    size($input) / 2 = $i;
+}
+int $array[] = {3,5,6};
+Median($array);
+print($input[$i]);

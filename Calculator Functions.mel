@@ -1,0 +1,115 @@
+global proc float Add(float $input[])
+{
+    int $result = $input[0];
+    for ($i = 0; $i < (size($input) - 1); $i++)
+    {
+        $result += $input[$i + 1];
+    }
+    return $result;
+}
+
+global proc float Subtract(float $input[])
+{
+    int $result = $input[0];
+    for ($i = 0; $i < (size($input) - 1); $i++)
+    {
+        $result -= $input[$i + 1];
+    }
+    return $result;
+}
+
+global proc float Multiply(float $input[])
+{
+    int $result = $input[0];
+    for ($i = 0; $i < (size($input) - 1); $i++)
+    {
+        $result *= $input[$i + 1];
+    }
+    return $result;
+}
+
+global proc float Divide(float $input[])
+{
+    int $result = $input[0];
+    for ($i = 0; $i < (size($input) - 1); $i++)
+    {
+        $result /= $input[$i + 1];
+    }
+    return $result;
+}
+
+global proc float Power(float $input[])
+{
+    int $result = $input[0];
+    for ($i = 0; $i < $input[1] - 1; $i++)
+    {
+        $result *= $input[0];
+    }
+    return $result;
+}
+
+global proc float Mean(float $input[])
+{
+    int $result = $input[0];
+    for ($i = 0; $i < (size($input) - 1); $i++)
+    {
+        $result += $input[$i + 1];
+    }
+    return $result / size($input);
+}
+
+global proc Median(float $input[])
+{
+    sort($input);
+    $middle = size($input) / 2;
+    print($input[$middle]);
+}
+
+global proc Calculator (float $input[], string $operation)
+{
+    string $word;
+    float $result;
+    if ($operation == "add" || $operation == "Add")
+    {
+        $result = Add($input);
+        $word = "sum ";
+    }
+    else if ($operation == "subtract" || $operation == "Subtract")
+    {
+        $result = Subtract($input);
+        $word = "difference ";
+    }
+    else if ($operation == "multiply" || $operation == "Multiply")
+    {
+        $result = Multiply($input);
+        $word = "product ";
+    }
+    else if ($operation == "divide" || $operation == "Divide")
+    {
+        $result = Divide($input);
+        $word = "quotient ";
+    }
+    else if ($operation == "power" || $operation == "Power")
+    {
+        $result = Power($input);
+        $word = "result ";
+    }
+    else if ($operation == "mean" || $operation == "Mean")
+    {
+        $result = Mean($input);
+        $word = "average ";
+    }
+    else if ($operation == "median" || $operation == "Median")
+    {
+        $result = Median($input);
+        $word = "median ";
+    }
+    else
+    {
+        print("No numbers and/or operation input");
+        return;
+    }
+    string $strRes = "The " + $word + "of your operation is " + $result + ".";
+    print ($strRes);
+}
+Calculator({3,5,6,9,7}, "divide");
