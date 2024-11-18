@@ -1,0 +1,19 @@
+// Random Placement Notes
+// x form command to give x y z min and max
+// Need a # of duplicates in the function
+/* 
+    Need to get selection first (ls -sl)
+    It will be an array typically called $sels[] for "selections"
+    for loop for # of duplicates so that it will run for each duplicate
+    Need a nested for loop
+    first loop cycles through each object listed
+    second loop creates a duplicate for each object
+    second loop index letter is typically j
+    first loop condition i < size($sels)
+    second loop condition j < numDups
+    duplicate command and then needs to be assigned to a variable and should be for $sels[i]
+    generate 3 random numbers inside the bounding box
+    move it to that coordinate
+    j++
+    i++
+*/

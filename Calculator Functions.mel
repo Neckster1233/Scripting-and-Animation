@@ -65,41 +65,67 @@ global proc Median(float $input[])
     print($input[$middle]);
 }
 
-global proc Calculator (float $input[], string $operation)
+global proc UI()
 {
+    string $mWindow = "CalculatorWindow";
+    if (`window -exists $mWindow`)
+        deleteUI $mWindow;
+
+    $mWindow = `window -title "Calculator" -resizeToFitChildren 1`;    
+        string $mLayout = `columnLayout -parent $mWindow`;
+            $intGroup = `intFieldGrp -parent $mLayout -numberOfFields 4 -label "Integers" -columnAlign 1 left`;
+                string $radioCollection = `radioCollection`;
+                $radioGroup = `radioButtonGrp -parent $mLayout -numberOfRadioButtons 4 -columnAlign 1 left -columnAttach 1 left 1
+                -labelArray4 "Add" "Subtract" "Multiply" "Divide"`;
+                string $radioGroup2 = `radioButtonGrp -parent $mLayout -shareCollection $radioGroup -numberOfRadioButtons 3 -columnAlign 1 center -columnAttach 1 left 1
+                -labelArray3 "Power" "Mean" "Median"`;
+            string $button = `button -command "Calculator()" -label "Go" -parent $mLayout`;
+    showWindow $mWindow;
+}
+
+global proc Calculator ()
+{
+    float $input[4];
+    global string $intGroup;
+    global string $radioGroup;
+    int $selectedButton = `radioButtonGrp -query -select $radioGroup`;
+    $input[0] = `intFieldGrp -query -value1 $intGroup`;
+    $input[1] = `intFieldGrp -query -value2 $intGroup`;
+    $input[2] = `intFieldGrp -query -value3 $intGroup`;
+    $input[3] = `intFieldGrp -query -value4 $intGroup`;
     string $word;
     float $result;
-    if ($operation == "add" || $operation == "Add")
+    if ($selectedButton == "1")
     {
         $result = Add($input);
         $word = "sum ";
     }
-    else if ($operation == "subtract" || $operation == "Subtract")
+    else if ($selectedButton == "2")
     {
         $result = Subtract($input);
         $word = "difference ";
     }
-    else if ($operation == "multiply" || $operation == "Multiply")
+    else if ($selectedButton == "3")
     {
         $result = Multiply($input);
         $word = "product ";
     }
-    else if ($operation == "divide" || $operation == "Divide")
+    else if ($selectedButton == "4")
     {
         $result = Divide($input);
         $word = "quotient ";
     }
-    else if ($operation == "power" || $operation == "Power")
+    else if ($selectedButton == "5")
     {
         $result = Power($input);
         $word = "result ";
     }
-    else if ($operation == "mean" || $operation == "Mean")
+    else if ($selectedButton == "6")
     {
         $result = Mean($input);
         $word = "average ";
     }
-    else if ($operation == "median" || $operation == "Median")
+    else if ($selectedButton == "7")
     {
         $result = Median($input);
         $word = "median ";
@@ -112,4 +138,5 @@ global proc Calculator (float $input[], string $operation)
     string $strRes = "The " + $word + "of your operation is " + $result + ".";
     print ($strRes);
 }
-Calculator({3,5,6,9,7}, "divide");
+//Calculator({3,5,6,9,7}, "divide");
+UI();

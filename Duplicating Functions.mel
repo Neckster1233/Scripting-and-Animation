@@ -1,0 +1,38 @@
+//Duplilcating Function
+/* Needs # of dupes
+Bounding Box to duplicate within
+UI For inputs
+*/
+
+global proc Duplicating(int $xmin, int $xmax, int $ymin, int $ymax, int $zmin, int $zmax, int $dups)
+{
+    string $sels[] = `ls -selection`;
+    for ($i = 0; $i < size($sels); $i++)
+    {
+        for ($j = 0; $j < $dups; $j++)
+        {
+            string $newObj[] = `duplicate $sels[$i]`;
+            float $x = rand($xmin, $xmax);
+            float $y = rand($ymin, $ymax);
+            float $z = rand($zmin, $zmax);
+            move $x $y $z $newObj[0];
+        }
+    }
+}
+
+global proc DuplicatingUI()
+{
+    string $mWindow = "DupWindow";
+    if (`window -exists $mWindow`)
+        deleteUI $mWindow;
+
+    $mWindow = `window -title "Duplicating" -widthHeight 400 300`;
+    string $mColumn = `columnLayout -parent $mWindow`;
+        int $Xminmax[] = `intFieldGrp -parent $mColumn -numberOfFields 2 -label "Xmin + Xmax" -extraLabel "ints"`;
+        int $Yminmax[] = `intFieldGrp -parent $mColumn -numberOfFields 2 -label "Ymin + Ymax" -extraLabel "ints"`;
+        int $Zminmax[] = `intFieldGrp -parent $mColumn -numberOfFields 2 -label "Zmin + Zmax" -extraLabel "ints"`;
+        int $numDups = `intFieldGrp -parent $mColumn -numberOfFields 1 -label "# of duplicates" -extraLabel "ints"`;
+        button -parent $mColumn -label "Go" -command "Duplicating";
+    showWindow $mWindow;    
+}
+DuplicatingUI();
